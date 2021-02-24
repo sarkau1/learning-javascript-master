@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 100px;
+  padding: 40px;
+  width: 700px;
+  border: 1px solid #c2c1c1;
+  box-shadow: 3px 3px 0px 8px rgba(202 202 245 / 20%);
+}
+
+form {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+/* Internet explorer */
+.container {
+  display: -ms-flexbox;
+  display: grid;
+  justify-content: start;
+  justify-content: space-between; /*add this line*/
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.select {
+  display: inline-block;
+}
+
+.name-group input,
+.date-group select,
+.gender-group select,
+.form-group input,
+.form-group textarea {
+  width: 100%;
+}
+
+.form-group-into-two-collumn input,
+.form-group-into-two-collumn select {
+  width: 47%;
+}
+.name-group input {
+  min-width: 226px;
+}
+
+.date-group select {
+  min-width: 96px;
+}
+
+.gender-group select {
+  min-width: 382px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+}
+
+.form-group-into-two-collumn input,
+.form-group-into-two-collumn select {
+  min-width: 340px;
+}
+
+.container > div {
+  margin-bottom: 25px;
+}
+
+.margin-bottom-25 {
+  margin-bottom: 25px;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.margin-bottom-15 > h4 {
+  margin-bottom: 15px;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+/* Input, select and textarea fields styling */
+select::-ms-expand {
+  display: none; /* remove default arrow on HTML tag select - IE10+ */
+}
+
+input[type="text"],
+textarea {
+  border-radius: 3px;
+  border: 1px solid rgb(202, 201, 201);
+  outline: none;
+  box-shadow: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background-image: url("dropdown.svg");
+  background-position: 98% center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  outline: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: 3px;
+  border: 1px solid rgb(202, 201, 201);
+  color: rgb(163, 162, 162);
+  padding-left: 5px;
+}
+
+input[type="text"],
+select {
+  height: 30px;
+  margin: 5px 0;
+}
+
+input[type="text"] {
+  padding-left: 5px;
+}
+
+input[type="text"]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: rgb(163, 162, 162);
+}
+
+input[type="text"]::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: rgb(163, 162, 162);
+}
+
+input[type="text"]:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: rgb(163, 162, 162);
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: rgb(163, 162, 162);
+}
+
+textarea {
+  display: block;
+  resize: vertical;
+  height: 200px;
+  resize: none; /*remove the resize handle on the bottom right*/
+  padding: 10px 0 0 10px;
+  overflow: auto; /*remove scrollbar*/
+}
+
+button {
+  background-color: #4caf50;
+  width: 100%;
+  min-width: 145px;
+  border: none;
+  color: white;
+  padding: 10px 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  white-space: nowrap;
+  border-radius: 3px;
+}
+
+button:hover {
+  background: rgb(10, 165, 10);
+}
+
+hr {
+  position: relative;
+  border: 0;
+  height: 0;
+  width: 770px;
+  left: -40px;
+  border-bottom: 1px solid rgba(163, 162, 162, 0.3);
+}
