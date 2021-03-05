@@ -1,5 +1,40 @@
-const form = {
-  month: [
+const form2 = {
+  year: generateArrayOfYears(),
+  month: generateArrayOfMonths(),
+  day: generateArrayOfDays(),
+  gender: ['male', 'female'],
+  course: ['java', 'javascript', 'ruby', 'php', 'c#'],
+}
+
+setData = (data, id) => {
+  let select = document.getElementById(id)
+  let option = document.createElement('option')
+  select.name = 'option'
+  let j
+  select.innerHTML = ''
+  for (j = 0; j < data.length; j++) {
+    option.innerText = data[j]
+    option.value = j
+    select.append(option.cloneNode(true))
+  }
+}
+for (const obj of Object.keys(form2)) {
+  setData(form2[obj], obj + 's')
+}
+
+function generateArrayOfDays(year = new Date().getFullYear(), month = 0) {
+  var date = new Date(year, month, 1)
+  var days = []
+  var j = 1
+  while (date.getMonth() === month) {
+    days.push(j++)
+    date.setDate(date.getDate() + 1)
+  }
+  return days
+}
+
+function generateArrayOfMonths() {
+  month = [
     'January',
     'February',
     'March',
@@ -12,86 +47,24 @@ const form = {
     'October',
     'November',
     'December',
-  ],
-  day: [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    31,
-  ],
-  year: [
-    2001,
-    2002,
-    2003,
-    2004,
-    2005,
-    2006,
-    2007,
-    2008,
-    2009,
-    2010,
-    2011,
-    2012,
-    2013,
-    2014,
-    2015,
-    2016,
-    2017,
-    2018,
-    2019,
-    2020,
-    2021,
-  ],
-  gender: ['male', 'female'],
-  course: ['java', 'javascript', 'ruby', 'php', 'c#'],
+  ]
+  return month
 }
 
-setData = (data, id, prepend = true) => {
-  let select = document.createElement('select')
-  let option = document.createElement('option')
-  select.name = 'option'
-  let j = 0
-  data.forEach(() => {
-    option.innerText = data[j]
-    option.value = j
-    select.append(option.cloneNode(true))
-    j++
-  })
-
-  prepend
-    ? document.getElementById(id).prepend(select)
-    : document.getElementById(id).append(select)
+function generateArrayOfYears(length = 20) {
+  var max = new Date().getFullYear()
+  var min = max - length
+  var years = []
+  for (var i = max; i >= min; i--) {
+    years.push(i)
+  }
+  return years
 }
 
-setData(form.day, 'days')
-setData(form.month, 'months')
-setData(form.year, 'years')
-setData(form.gender, 'genders')
-setData(form.course, 'courses', false)
+function updateDays() {
+  var month = document.getElementById('months')
+  var years = document.getElementById('years')
+  var yearsVal = years.options[years.selectedIndex].text
+  form2.day = generateArrayOfDays(parseInt(yearsVal), parseInt(month.value))
+  setData(form2.day, 'days')
+}
