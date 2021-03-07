@@ -28,17 +28,17 @@
         <div class="date-group">
           <h4>Birth Date</h4>
           <div class="select">
-            <select id="months" onChange="updateDays()"></select>
+            <select id="month" onChange="updateDays()"></select>
             <br />
             <label id="monthLabel" for="month">Month</label>
           </div>
           <div class="select">
-            <select id="days"></select>
+            <select id="day"></select>
             <br />
             <label id="dayLabel" for="day">Day</label>
           </div>
           <div class="select">
-            <select id="years" onChange="updateDays()"></select>
+            <select id="year" onChange="updateDays()"></select>
             <br />
             <label id="yearLabel" for="year">Year</label>
           </div>
@@ -46,7 +46,7 @@
         <div class="gender-group">
           <h4 id="genderLabel">Gender</h4>
           <div class="select">
-            <select id="genders"></select>
+            <select id="gender"></select>
           </div>
         </div>
       </div>
@@ -62,12 +62,15 @@
         >
       </div>
       <div class="container form-group-into-two-collumn">
-        <div>
-          <input type="text" /><br />
+        <div class="select">
+          <select id="city" onChange="updateStates()"></select>
+          <br />
           <label id="cityLabel" for="city">City</label>
         </div>
-        <div>
-          <input type="text" /><br />
+
+        <div class="select">
+          <select id="state"></select>
+          <br />
           <label id="stateAndProvinceLabel" for="state">State / Province</label>
         </div>
       </div>
@@ -104,7 +107,7 @@
       </div>
       <div class="form-group-into-two-collumn margin-bottom-25">
         <h4 id="coursesLabel">Courses</h4>
-        <select id="courses"></select>
+        <select id="course"></select>
       </div>
       <div class="form-group margin-bottom-15">
         <h4 id="additionalCommentsLabel">Additional Comments</h4>

@@ -4,8 +4,21 @@ const form2 = {
   day: generateArrayOfDays(),
   gender: ['male', 'female'],
   course: ['java', 'javascript', 'ruby', 'php', 'c#'],
+  cityAndState: [
+    { lietuva: ['vienas', 'du', 'trys'] },
+    { latvija: ['1', 'du', 'trys'] },
+    { estija: ['1', '2', 'trys', 'lapai'] },
+  ],
 }
 
+getCities = () => {
+  var cities = []
+  for (let country of Object.keys(form2.cityAndState)) {
+    var capital = form2.cityAndState[country]
+    cities.push(Object.keys(capital))
+  }
+  return cities
+}
 setData = (data, id) => {
   let select = document.getElementById(id)
   let option = document.createElement('option')
@@ -18,9 +31,18 @@ setData = (data, id) => {
     select.append(option.cloneNode(true))
   }
 }
-for (const obj of Object.keys(form2)) {
-  setData(form2[obj], obj + 's')
+
+initializeData = () => {
+  for (const obj of Object.keys(form2)) {
+    if (obj != 'cityAndState') {
+      setData(form2[obj], obj)
+    } else {
+      setData(getCities(), 'city')
+    }
+  }
 }
+
+initializeData()
 
 function generateArrayOfDays(year = new Date().getFullYear(), month = 0) {
   var date = new Date(year, month, 1)
@@ -67,4 +89,12 @@ function updateDays() {
   var yearsVal = years.options[years.selectedIndex].text
   form2.day = generateArrayOfDays(parseInt(yearsVal), parseInt(month.value))
   setData(form2.day, 'days')
+}
+function updateStates() {
+  var cities = document.getElementById('city')
+  var citiesVal = cities.options[cities.selectedIndex].value
+  let test = Object.values(form2.cityAndState[citiesVal])
+  for (var t of test) {
+    setData(t, 'state')
+  }
 }
