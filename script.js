@@ -13,9 +13,9 @@ const form2 = {
 
 getCities = () => {
   var cities = []
-  for (let country of Object.keys(form2.cityAndState)) {
-    var capital = form2.cityAndState[country]
-    cities.push(Object.keys(capital))
+  for (let c of Object.keys(form2.cityAndState)) {
+    var cityStateObject = form2.cityAndState[c]
+    cities.push(Object.keys(cityStateObject))
   }
   return cities
 }
@@ -82,6 +82,24 @@ function generateArrayOfYears(length = 20) {
   }
   return years
 }
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/
+  if (!re.test(email)) alert('Enter a valid email')
+  return re.test(email)
+}
+
+function validatePhoneNumber(number) {
+  {
+    console.log('working')
+    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+    if (number.match(phoneno)) {
+      return true
+    } else {
+      alert('Enter a correct number (000) 000-0000')
+      return false
+    }
+  }
+}
 
 function updateDays() {
   var month = document.getElementById('months')
@@ -93,8 +111,8 @@ function updateDays() {
 function updateStates() {
   var cities = document.getElementById('city')
   var citiesVal = cities.options[cities.selectedIndex].value
-  let test = Object.values(form2.cityAndState[citiesVal])
-  for (var t of test) {
-    setData(t, 'state')
+  let states = Object.values(form2.cityAndState[citiesVal])
+  for (var s of states) {
+    setData(s, 'state')
   }
 }
