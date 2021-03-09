@@ -84,18 +84,31 @@ function generateArrayOfYears(length = 20) {
 }
 function validateEmail(email) {
   var re = /\S+@\S+\.\S+/
-  if (!re.test(email)) alert('Enter a valid email')
+  if (!re.test(email)) {
+    document.getElementById('email-error').innerHTML =
+      'Enter a correct email (xxx@xxx.xxx)'
+
+    document.getElementById('email').style.borderColor = 'red'
+  } else {
+    document.getElementById('email').style.borderColor = 'green'
+    document.getElementById('email' + '-error').innerHTML = ''
+  }
+
   return re.test(email)
 }
 
-function validatePhoneNumber(number) {
+function validatePhoneNumber(number, id) {
   {
-    console.log('working')
     var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
     if (number.match(phoneno)) {
+      document.getElementById(id).style.borderColor = 'green'
+      document.getElementById(id + '-error').innerHTML = ''
       return true
     } else {
-      alert('Enter a correct number (000) 000-0000')
+      document.getElementById(id + '-error').innerHTML =
+        'Enter a correct number (000) 000-0000'
+
+      document.getElementById(id).style.borderColor = 'red'
       return false
     }
   }
@@ -115,4 +128,8 @@ function updateStates() {
   for (var s of states) {
     setData(s, 'state')
   }
+}
+
+function validateFormOnSubmit(contact) {
+  console.log(contact)
 }
